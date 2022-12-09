@@ -1,0 +1,16 @@
+- go test
+    - roda os testes unitarios referente ao pacote do diretorio atual
+- go test ./...
+    - roda os testes unitarios de forma recursiva
+- go test ./... --coverprofile cobertura.txt
+    - roda os testes unitarios e gera um .txt referente ao code coverage
+- go tool cover --html=cobertura.txt
+    - com base no .txt gerado, gera um html que fica visual o code coverage
+- go mod init nome-projeto
+    - cria o go.mod referente ao modulo
+- go run file.go
+    - executa um arquivo go
+- go build
+    - executa o build gerando um executavel
+- go get github.com/...
+    - adiciona a dependencia do pacote externo ao projeto
