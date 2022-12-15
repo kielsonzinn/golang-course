@@ -3,8 +3,8 @@
     <span> {{ .Curtidas }} </span>
 {{ end }}
 
-{{ define "editar" }}
-    <a href="/editar" style="text-decoration: none;">
+{{ define "atualizar" }}
+    <a href="/publicacoes/{{ .ID }}/atualizar" style="text-decoration: none;">
         <i class="fas fa-edit">
     </i></a>
 {{ end }}
@@ -27,7 +27,7 @@
         {{ template "cabecalho-publicacao" .}}
         <p>
             {{ template "curtidas" .}}
-            {{ template "editar" }}
+            {{ template "atualizar" .}}
             {{ template "deletar" }}
         </p>
     </div>
