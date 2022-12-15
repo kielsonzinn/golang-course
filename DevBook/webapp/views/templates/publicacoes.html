@@ -1,5 +1,5 @@
 {{ define "curtidas" }}
-    <i class="fas fa-heart curtir-publicacao"></i>
+    <i class="fas fa-heart curtir-publicacao" style="cursor: pointer;"></i>
     <span> {{ .Curtidas }} </span>
 {{ end }}
 
@@ -10,9 +10,7 @@
 {{ end }}
 
 {{ define "deletar" }}
-    <a href="/deletar" style="text-decoration: none;">
-        <i class="fas fa-trash text-danger"></i>
-    </a>
+    <i class="fas fa-trash text-danger deletar-publicacao" style="cursor: pointer;"></i>
 {{ end }}
 
 {{ define "cabecalho-publicacao" }}
@@ -28,7 +26,7 @@
         <p>
             {{ template "curtidas" .}}
             {{ template "atualizar" .}}
-            {{ template "deletar" }}
+            {{ template "deletar" .}}
         </p>
     </div>
 {{ end }}
