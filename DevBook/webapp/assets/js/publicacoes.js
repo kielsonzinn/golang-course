@@ -112,7 +112,7 @@ function deletarPublicacao( event ) {
         title: "Atenção!",
         text: "Tem certeza que deseja excluir essa publicação? Essa ação é irreversível!",
         showCancelButton: true,
-        cancelButton: "Cancelar",
+        cancelButtonText: "Cancelar",
         icon: "warning"
     } ).then( function( confirm ) {
         if ( !confirm.value ) {

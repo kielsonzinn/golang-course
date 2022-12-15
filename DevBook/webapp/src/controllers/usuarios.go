@@ -159,3 +159,24 @@ func AtualizarSenha(w http.ResponseWriter, r *http.Request) {
 
 	respostas.JSON(w, response.StatusCode, nil)
 }
+
+// DeletarUsuario chama a API para deletar um usuário
+func DeletarUsuario(w http.ResponseWriter, r *http.Request) {
+	cookie, _ := cookies.Ler(r)
+	usuarioID, _ := strconv.ParseUint(cookie["id"], 10, 64)
+
+	url := fmt.Sprintf("%s/usuarios/%d", config.APIURL, usuarioID)
+	response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodDelete, url, nil)
+	if erro != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{erro.Error()})
+		return
+	}
+	defer response.Body.Close()
+
+	if response.StatusCode >= http.StatusBadRequest {
+		respostas.TratarStatusCodeDeErro(w, response)
+		return
+	}
+
+	respostas.JSON(w, response.StatusCode, nil)
+}
