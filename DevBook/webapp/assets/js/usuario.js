@@ -1,7 +1,8 @@
 $('#parar-de-seguir').on('click', pararDeSeguir)
 $('#seguir').on('click', seguir)
+$('#editar-usuario').on('submit', editar)
 
-function pararDeSeguir( event ) {
+function pararDeSeguir() {
     const usuarioId = $(this).data('usuario-id');
     $(this).prop('disabled', true);
 
@@ -18,7 +19,7 @@ function pararDeSeguir( event ) {
     } );
 }
 
-function seguir( event ) {
+function seguir() {
     const usuarioId = $(this).data('usuario-id');
     $(this).prop('disabled', true);
 
@@ -32,5 +33,26 @@ function seguir( event ) {
     } ).fail( function() {
         Swal.fire( "Ops...", "Erro ao seguir o usuário", "error" );
         $(this).prop( 'disabled', false );
+    } );
+}
+
+function editar( event ) {
+    event.preventDefault();
+
+    $.ajax({
+        url: "/editar-usuario",
+        method: "PUT",
+        data: {
+            nome: $('#nome').val(),
+            email: $('#email').val(),
+            nick: $('#nick').val(),
+        }
+    } ).done( function() {
+        Swal.fire( "Sucesso!", "Usuário atualizado com sucesso!", "success" )
+            .then( function() {
+                window.location = "/perfil";
+            } );
+    } ).fail( function() {
+        Swal.fire( "Ops...", "Erro ao atualizar o usuário", "error" );
     } );
 }
