@@ -38,5 +38,5 @@ func CriarUsuario(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	respostas.JSON(w, response.StatusCode, struct{}{})
+	respostas.JSON(w, response.StatusCode, nil)
 }

@@ -40,7 +40,7 @@ func CriarPublicacao(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	respostas.JSON(w, response.StatusCode, struct{}{})
+	respostas.JSON(w, response.StatusCode, nil)
 }
 
 // CurtirPublicacao chama a API para curtir uma publicação
